@@ -93,35 +93,98 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 
 % 设置代码环境
-\RequirePackage{listings}
+\usepackage{listings,color}
 
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
+% Matlab highlight color settings
+%\definecolor{mBasic}{RGB}{248,248,242}       % default
+\definecolor{mKeyword}{RGB}{0,0,255}          % bule
+\definecolor{mString}{RGB}{160,32,240}        % purple
+\definecolor{mComment}{RGB}{34,139,34}        % green
+\definecolor{mBackground}{RGB}{245,245,245}   % lightgrey
+\definecolor{mNumber}{RGB}{128,128,128}       % gray
 
+% Python highlight color settings
+%\definecolor{pBasic}{RGB}{248, 248, 242}     % default
+\definecolor{pKeyword}{RGB}{228,0,128}        % magenta
+\definecolor{pString}{RGB}{148,0,209}         % purple
+\definecolor{pComment}{RGB}{117,113,94}       % gray
+\definecolor{pIdentifier}{RGB}{166, 226, 46}  %
+\definecolor{pBackground}{RGB}{245,245,245}   % lightgrey
+\definecolor{pNumber}{RGB}{128,128,128}       % gray
 
-\lstset{
+\lstnewenvironment{Matlab}[1]{
+\lstset{language=matlab,               % choose the language of the code
   xleftmargin=20pt,
   xrightmargin=20pt,
-  frame=single,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  framerule=0.5pt,
-  framesep=4pt,
-  rulecolor=\color{gray!35},
-  backgroundcolor=\color{gray!5},
-  basicstyle={\normalsize\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3,
-}
+  frame=tlbr,framesep=4pt,framerule=0.5pt, % sets the frame style
+  %frame=shadowbox,rulesepcolor=\color{red!20!green!20!blue!20},
+  basicstyle=\small\fontspec{Courier New},
+  keywordstyle={\color{mKeyword}},     % sets color for keywords
+  stringstyle={\color{mString}},       % sets color for strings
+  commentstyle={\color{mComment}},     % sets color for comments
+  backgroundcolor=\color{gray!5},%\color{pBackground}, % choose the background color
+  rulecolor=\color{gray!50},
+  title=#1,                            % \lstname show the filename of files
+  keywords={break,case,catch,classdef,continue,else,elseif,end,for,
+  function,global,if,otherwise,parfor,persistent,return,spmd,switch,try,while},
+  showspaces=false,                    % show spaces adding particular underscores
+  showstringspaces=false,              % underline spaces within strings
+  showtabs=false,                      % show tabs within strings adding particular underscores
+  tabsize=4,                           % sets default tabsize to 2 spaces
+  captionpos=t,                        % sets the caption-position to bottom
+  breaklines=true,                     % sets automatic line breaking
+}}{}
+
+\lstnewenvironment{Python}[1]{
+\lstset{language=python,               % choose the language of the code
+  xleftmargin=20pt,
+  xrightmargin=20pt,
+  frame=single,framesep=4pt,framerule=0.5pt, % sets the frame style
+  %frame=shadowbox,rulesepcolor=\color{red!20!green!20!blue!20},
+  basicstyle=\small\ttfamily,          % sets font style for the code
+  %basicstyle=\footnotesize\fontspec{Consolas},
+  keywordstyle=\color{pKeyword},       % sets color for keywords
+  stringstyle=\color{pString},         % sets color for strings
+  commentstyle=\color{pComment},       % sets color for comments
+  backgroundcolor=\color{gray!5},%\color{pBackground}, % choose the background color
+  rulecolor=\color{gray!50},
+  title=#1,                            % \lstnames how the filename of files
+  emph={format_string,eff_ana_bf,permute,eff_ana_btr},
+  emphstyle=\color{pIdentifier}
+  showspaces=false,                    % show spaces adding particular underscores
+  showstringspaces=false,              % underline spaces within strings
+  showtabs=false,                      % show tabs within strings adding particular underscores
+  tabsize=4,                           % sets default tabsize to 2 spaces
+  captionpos=t,                        % sets the caption-position to bottom
+  breaklines=true,                     % sets automatic line breaking
+}}{}
+
+% \RequirePackage{listings}
+% \definecolor{dkgreen}{rgb}{0,0.6,0}
+% \definecolor{gray}{rgb}{0.5,0.5,0.5}
+% \definecolor{mauve}{rgb}{0.58,0,0.82}
+% \lstset{
+%   xleftmargin=20pt,
+%   xrightmargin=20pt,
+%   frame=single,
+%   aboveskip=3mm,
+%   belowskip=3mm,
+%   showstringspaces=false,
+%   columns=flexible,
+%   framerule=0.5pt,
+%   framesep=4pt,
+%   rulecolor=\color{gray!35},
+%   backgroundcolor=\color{gray!5},
+%   basicstyle={\normalsize\ttfamily},
+%   numbers=none,
+%   numberstyle=\tiny\color{gray},
+%   keywordstyle=\color{blue},
+%   commentstyle=\color{dkgreen},
+%   stringstyle=\color{mauve},
+%   breaklines=true,
+%   breakatwhitespace=true,
+%   tabsize=3,
+% }
 
 % 首行缩进
 \RequirePackage{indentfirst}
@@ -218,15 +281,22 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \captionsetup[figure]{%
 	format=hang,   % 标题从第二行开始都有缩进, 应该和 justification=raggedright 的效果一样.
 	labelsep=quad, % 分隔符是一个空格
-	font={song,minusfour,bf}, % 图的字体, 宋体小四
+  skip={5pt},
+	font={song,minusfour}, % 图的字体, 宋体小四 ,bf
 	position=bottom % position=bottom, 不代表标题放在下面, 标题仍放在你放\caption的位置.
 }
 \captionsetup[table]{%
 	format=hang,   % 标题从第二行开始都有缩进, 应该和 justification=raggedright 的效果一样.
 	labelsep=quad, % 分隔符是一个空格
-	font={song,minusfour,bf}, % 表的字体, 宋体小四
+  skip={5pt},
+	font={song,minusfour}, % 表的字体, 宋体小四 ,bf
 	position=top % position=bottom, 不代表标题放在下面, 标题仍放在你放\caption的位置.
 }
+\setlength{\textfloatsep}{0pt}
+\setlength{\floatsep}{10pt plus 3pt minus 2pt}
+\setlength{\intextsep}{10pt}
+\setlength{\abovecaptionskip}{4pt plus1pt minus1pt}
+\setlength{\belowcaptionskip}{6pt plus1pt minus2pt}
 % 列表环境设置
 \setlist{%
 	topsep=0.3em, % 列表顶端的垂直空白
@@ -349,7 +419,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \renewcommand\thesubsection{\arabic{section}\thinspace.\thinspace\arabic{subsection}}
 \renewcommand\thesubsubsection{\thesubsection\thinspace.\thinspace\arabic{subsubsection}}
 \renewcommand\section{\@startsection{section}{1}{\z@}%
- 	{2.5ex \@plus -1ex \@minus -.2ex}%
+ 	{5ex \@plus -1ex \@minus -.2ex}%
 	{2.3ex \@plus.2ex}%
 	{\bfseries\centering\zihao{4}\heiti}}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
