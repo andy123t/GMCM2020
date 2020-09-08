@@ -96,7 +96,6 @@
 
 
 
-
 \clearpage
 \section{模型的假设}
 
@@ -112,6 +111,7 @@
 
 \begin{table}[htp!]
 \centering
+\renewcommand\arraystretch{1.2} %定义表格高度
 \newcolumntype{L}{>{\quad}X}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
@@ -138,7 +138,7 @@
   $ e $  &  符号5的意义     \\
   \arrayrulecolor{color2}\hline
   \rowcolor{color4}
-  $ f $  &  符号6的意义符号6的意义     \\
+  $ f $  &  符号6的意义符号6的意义    \\
   \arrayrulecolor{color2}\hline
   \rowcolor{color3}
   $ g $  &  符号7的意义     \\
@@ -399,7 +399,7 @@ output result
   \rowcolor[gray]{0.95}
  \red{B (9D)}~~     & 248      & 250     & 99      & 250     &161 \\
  \rowcolor[gray]{0.9}
-   & \red{B (10D)}   & 243 ~~~~~~     & \red{B (21D)}   & 243 ~~~~~~     & \red{B (21D)} \\
+   & \red{B (10D)}   & 243     & \red{B (21D)}   & 243    & \red{B (21D)} \\
  \rowcolor[gray]{0.95}
     &          &         &         &         &       \\
  \rowcolor[gray]{0.9}
@@ -416,13 +416,13 @@ output result
 \begin{figure}[htp!]
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=\textwidth]{image1}
+\includegraphics[width=0.9\textwidth]{image1}
 \caption{fig1}
 \label{fig:side:a}
 \end{minipage}%
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=\textwidth]{image2}  % 2.2in
+\includegraphics[width=0.9\textwidth]{image2}  % 2.2in
 \caption{fig2}
 \label{fig:side:b}
 \end{minipage}
@@ -464,6 +464,7 @@ output result
 % \bibitem{bib:one} ....
 % \bibitem{bib:two} ....
 %\end{thebibliography}
+
 
 %采用bibtex方案
 引用示例
@@ -516,6 +517,8 @@ S=ss; D=dd(1,:);
 \end{Matlab}
 \vspace{2ex}
 
+\section{Python 源程序}
+\renewcommand{\thesubsection}{B.\arabic{subsection}}
 \subsection{第2问程序}
 \vspace{-2ex}
 \begin{Python}{mip1.py}
