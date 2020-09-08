@@ -366,8 +366,9 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
   \def\thepage{0}
   \thispagestyle{empty}%
  \begin{center}
+ \vspace*{0.5cm}
  {\includegraphics{logo}}
-
+ 
   \vskip3cm
  {\xinwei\zihao{2} \gmcm@ges@string@contents \par}
  \end{center}
@@ -376,17 +377,18 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
  % \thispagestyle{gmcmheadings}
  \renewcommand\arraystretch{1.5}
- \noindent \begin{tabularx}{\textwidth-18pt}{lX}
+ %\noindent 
+ \begin{tabularx}{\textwidth-40pt}{lX}
   \zihao{-2}\bfseries 学\qquad 校&\zihao{-2}\bfseries\gmcm@tokens@schoolname\\
-  \Xhline{1pt}\\[-15pt]
+  \Xhline{1.2pt}\\
   \zihao{-2}\bfseries 参赛队号&\zihao{-2}\bfseries\gmcm@tokens@baominghao\\
-  \Xhline{1pt}\\[-15pt]
+  \Xhline{1.2pt}\\[-15pt]
    \multirow{3}{*}{\zihao{-2}\bfseries 队员姓名}&\zihao{-2}\bfseries	 1. \gmcm@tokens@membera\hfill\null\\
    \cline{2-2}\\[-15pt]
    	                           &\zihao{-2}\bfseries 2. \gmcm@tokens@memberb\hfill\null\\
    \cline{2-2}\\[-15pt]
 		                    &\zihao{-2}\bfseries 3.  \gmcm@tokens@memberc\hfill\null\\
-   \Xhline{1pt}
+   \Xhline{1.2pt}
   \end{tabularx}
 	\makenametitle
 	}
@@ -514,7 +516,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
  %%%常量
 
 %\newcommand\gmcm@ges@string@contents{“华为杯”第十五届全国研究生\par 数学建模竞赛}
-\newcommand\gmcm@ges@string@contents{\includegraphics[scale=0.86]{title}}
+\newcommand\gmcm@ges@string@contents{\includegraphics{title}}
 
 
 %设置目录格式
