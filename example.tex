@@ -1,11 +1,9 @@
 % !Mode:: "TeX:UTF-8"
 %!TEX program  = xelatex
 
-\documentclass[bwprint]{gmcmthesis}
+\documentclass[bwprint,12pt]{gmcmthesis}
 \hypersetup{hidelinks}
 \usepackage{bookmark}
-
-%\input{mp-style}
 
 %\usepackage{fontspec}  % for Consolas & Courier New
 %\lstset{basicstyle=\small\fontspec{Consolas}}
@@ -137,7 +135,7 @@
   \hline
   $ i $  &  符号9的意义符号9的意义     \\
   \hline
-  
+
   $ k $  &  符号10的意义     \\
   \hline
   $ l $  &  符号11的意义    \\
@@ -473,16 +471,14 @@ S=ss; D=dd(1,:);
 \subsection{第2问程序}
 \vspace{-2ex}
 \begin{Python}{mip1.py}
-# This example formulates and solves the following simple MIP model:
+# Formulates and solves the following simple MIP model:
 #  maximize
 #        x +   y + 2 z
 #  subject to
 #        x + 2 y + 3 z <= 4
 #        x +   y       >= 1
 #        x, y, z binary
-
-# import gurobipy as gp
-from gurobipy import * #GRB
+from gurobipy import *
 try:
     # Create a new model
     m = Model("mip1")
